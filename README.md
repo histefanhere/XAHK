@@ -1,4 +1,4 @@
-<img align='right' src='https://raw.githubusercontent.com/monpjc/XAHK/master/welcomepic.png' width='200px' alt='XAHK' />
+<img align='right' src='https://github.com/monpjc/XAHK/blob/master/welcomepic.png' width='200px' alt='XAHK' />
 
 # XAHK
 Auto Key Clicker for Minecraft - Under request from Xisuma<br>
