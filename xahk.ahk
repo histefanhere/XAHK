@@ -130,8 +130,9 @@ MenuFishing:
 		Gui, Add, Text,, CURRENT AVALIBLE OPTIONS: 
 		Gui, Add, Text,, o- Pressing ctrl + alt + f will start fishing
 		Gui, Add, Text,, o- Pressing ctrl + alt + s will stop any AutoKey funtion above
-		Gui, Add, Text,, 
-		Gui, Add, Slider, vMySlider w200 ToolTip Range0-1000 TickInterval100, 500 
+		Gui, Add, Text,, Adjust the slider below if there is delay issues on a server 
+		Gui, Add, Slider, vFishDelay gSliderSet w200 ToolTip Range100-1000 TickInterval100, 100
+		Gui, Submit, NoHide ; Submits the slider default value so it can be used before adjustment
 		Gui, Show,, Minecraft X-AHK V0.4
 
 	ProgState := 2
@@ -250,6 +251,7 @@ Fishing:
 	if (ProgState != 2)
 		Return
 
+	
 	BreakLoop := 0
 		Loop
 		{
@@ -259,12 +261,17 @@ Fishing:
 				break
 			}
 
-			Sleep 100
+			Sleep %FishDelay%
 				ControlClick, , ahk_id %id%, ,Right, , NAD
-			Sleep 500
+			Sleep 100
 				ControlClick, , ahk_id %id%, ,Right, , NAU
 		}
 	Return
+}
+SliderSet:
+{
+	; for whatever reason, without a working g-label the slider value is not updated,
+	; so this is necessary
 }
 ;==================================================================================================
 ; Called when Ctrl+Alt+M is pressed
