@@ -3,7 +3,7 @@
 
 # XAHK
 Auto Key Clicker for Minecraft - Under request from Xisuma<br>
-Developed for use with Vanilla Minecraft and tested with 1.14<br>
+Developed for use with vanilla Minecraft and tested with 1.14, 1.15<br>
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/monpjc/XAHK)](https://github.com/monpjc/XAHK/releases)
 [![LICENSE](https://img.shields.io/github/license/monpjc/XAHK)](https://github.com/monpjc/XAHK/blob/master/LICENSE)
 
@@ -18,26 +18,39 @@ Developed for use with Vanilla Minecraft and tested with 1.14<br>
 - [Links](#Links)
 
 ## Features
-Allows client opperation of player will user is away from computer. X-AHK will send a stream of keybaord and mouse inputs to a target window as if the user was opperating the player. features include:<br>
-AFK Fishing, AFK Concret Convertion & AFK Mob Grinder
+Allows running the Minecraft game client while the user is away from the computer (Windows only). X-AHK will send a stream of keyboard and mouse inputs to a target game window as if the user was playing the game. Features include:<br>
+- AFK Fishing
+- AFK Concrete Convertion
+- AFK Mob Grinding
 
 ## Aim of project
-To continue development past inital concept design and release to a release that includes GUI and user preferances of key input timings
+To continue development past inital concept design and release to a release that includes GUI and user preferences of key input timings.
 
 ## Installation and Usage
 
-1. Download and Install AutoHotkey. [GitHub Releases](https://github.com/Lexikos/AutoHotkey_L/releases)
-2. Download the XAHK AutoHotkey script. [GitHub Releases](https://github.com/monpjc/XAHK/releases)
-3. Run the script and follow on-screen instructions. The [YouTube video](https://youtu.be/-wKW0OovGK4?t=280) by [xisumavoid](https://www.youtube.com/channel/UCU9pX8hKcrx06XfOB-VQLdw) also contains some instructions.
+1. Download and Install AutoHotkey; [GitHub Releases](https://github.com/Lexikos/AutoHotkey_L/releases)
+2. Download the X-AHK AutoHotkey script; [GitHub Releases](https://github.com/monpjc/XAHK/releases)
+3. Run the script and follow on-screen instructions; the [YouTube video](https://youtu.be/-wKW0OovGK4?t=280) by [xisumavoid](https://www.youtube.com/channel/UCU9pX8hKcrx06XfOB-VQLdw) also contains some additional instruction.
 
 ## YouTube Video
-
 [![YouTube](https://img.youtube.com/vi/-wKW0OovGK4/0.jpg)](https://youtu.be/-wKW0OovGK4?t=280 "Click to play on YouTube")
 
 ## Next Phase - Release 1.0
 Added GUI<br>
 Multi Instant Opperation<br>
 Bug Fixes<br>
+
+## Platform Support
+Although Minecraft runs on multiple platforms, this software requires AutoHotkey, which supports *Windows only*.
+
+Linux players may find an alternative by using a [shell script](https://www.reddit.com/r/Minecraft/comments/bu4gka/linux_autoclicker_bash_script_useful_for_afk/).
+
+Mac players can use macOS's built-in accessibiltiy features and a full-size keyboard with a numeric keypad:
+1. Open System Preferences.
+2. Go to Accessibility → Pointer Control → Alternate Control Methods and enable "Mouse Keys".
+3. In Minecraft, position your avatar for the activity (fishing, for example) and press ⌃5️⃣ (control+5, on the numpad) to send a "right click".
+4. Now tap 0️⃣ (on the numpad) to simulate "hold right click"; note that you cannot switch applications as with XAHK.
+
 
 ## License
 
