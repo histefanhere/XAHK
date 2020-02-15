@@ -3,7 +3,7 @@
 #NoEnv
 SetBatchLines -1
 SetTitleMatchMode 2
-#SingleInstance Force
+; #SingleInstance Force
 SetWorkingDir %A_ScriptDir%
 ;==================================================================================================
 ; Globle values
