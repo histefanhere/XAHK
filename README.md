@@ -21,7 +21,7 @@ Developed for use with Vanilla Minecraft and tested with 1.14<br>
 
 ## Features
 Allows client opperation of player will user is away from computer. X-AHK will send a stream of keybaord and mouse inputs to a target window as if the user was opperating the player. features include:<br>
-AFK Fishing, AFK Concret Convertion & AFK Mob Grinder
+AFK Fishing, AFK Concrete Convertion & AFK Mob Grinder
 
 ## Aim of project
 To continue development past inital concept design and release to a release that includes GUI and user preferances of key input timings
