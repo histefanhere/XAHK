@@ -1,5 +1,7 @@
 <img align='right' src='https://github.com/monpjc/XAHK/blob/master/welcomepic.png' width='200px' alt='XAHK' />
 
+# Update
+Over the last few months I have left this project on hold due to IRL issues, however from June/July 2020 I will start addressing the issues and communications I have recived for users.
 
 # XAHK
 Auto Key Clicker for Minecraft - Under request from Xisuma<br>
