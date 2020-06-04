@@ -1,5 +1,7 @@
 <img align='right' src='https://github.com/monpjc/XAHK/blob/master/welcomepic.png' width='200px' alt='XAHK' />
 
+# Update
+Over the last few months I have left this project on hold due to IRL issues, however from June/July 2020 I will start addressing the issues and communications I have recived for users.
 
 # XAHK
 Auto Key Clicker for Minecraft - Under request from Xisuma<br>
@@ -18,10 +20,15 @@ Developed for use with vanilla Minecraft and tested with 1.14, 1.15<br>
 - [Links](#Links)
 
 ## Features
+
 Allows running the Minecraft game client while the user is away from the computer (Windows only). X-AHK will send a stream of keyboard and mouse inputs to a target game window as if the user was playing the game. Features include:<br>
 - AFK Fishing
 - AFK Concrete Convertion
 - AFK Mob Grinding
+=======
+Allows client opperation of player will user is away from computer. X-AHK will send a stream of keybaord and mouse inputs to a target window as if the user was opperating the player. features include:<br>
+AFK Fishing, AFK Concrete Convertion & AFK Mob Grinder
+
 
 ## Aim of project
 To continue development past inital concept design and release to a release that includes GUI and user preferences of key input timings.
