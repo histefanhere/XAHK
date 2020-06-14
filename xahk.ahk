@@ -41,8 +41,14 @@ Hotkey  !^w,    SelectWindow 	;Allows user to select window to control by hoveri
 ;===================================================================================================
 ;Menu
 ;===================================================================================================
+
+Menu, tray, icon, XisumaVoid_Face.ico
+Menu, Tray, Add ;Adds sepearter line
+Menu, Tray, Add, UnHide, ShowGUI
+
 Menu, FileMenu, Add, Open, MenuFileOpen
-Menu, FileMenu, Add, Exit, MenuHandler
+Menu, FileMenu, Add, Hide, HideGUI
+Menu, FileMenu, Add, Exit, GUIClose ;Changed Target Label to GUIClose so Script will Exit. 
 Menu, HelpMenu, Add, About, MenuHandler
 Menu, OptionsMenu, Add, Fishing, MenuFishing
 Menu, OptionsMenu, Add, AFK Mob, MenuAFK
@@ -59,9 +65,9 @@ Menu, ClickerMenu, Add, Options, :OptionsMenu
 if %ProgState% != 0
 	Return
 	
-Gui, Show, w300 h300, Shortcuts
-Gui, Add, Pic, w280 h290 vpic_get, welcomepic.png
-Gui, Show,, Minecraft X-AHK V0.4
+Gui, Start:Show, w300 h300, Shortcuts
+Gui, Start:Add, Pic, w280 h290 vpic_get, welcomepic.png
+Gui, Start:Show,, Minecraft X-AHK V0.4
 return
 ;===================================================================================================
 ; Called when Ctrl+Alt+W is pressed and captures target window information, checks its a java prog
@@ -79,15 +85,15 @@ SelectWindow:
 	{
 		;Target window found, swop to next screen
 		ProgState = 1
-		Gui, Destroy
-		Gui, Show, w500 h500, Temp
-		Gui, Menu, ClickerMenu
-		Gui, Add, Text,, Target Window Title : %targettitle%
-		Gui, Add, Text,, Windows HWIND is : %id%
-		Gui, Add, Text,, To change mode of opperation please select from Option menu.
-		Gui, Add, Text,, MODE:  
-		Gui, Add, Text, vMode w30, None
-		Gui, Show,, Minecraft X-AHK V0.4
+		Gui, Start:Destroy
+		Gui, Main:New ,, Minecraft X-AHK V0.4 ;Using New allows all GUI commands to be done before showing GUI
+		Gui, Main:Menu, ClickerMenu
+		Gui, Main:Add, Text,, Target Window Title : %targettitle%
+		Gui, Main:Add, Text,, Windows HWIND is : %id%
+		Gui, Main:Add, Text,, To change mode of opperation please select from Option menu.
+		Gui, Main:Add, Text,, MODE:  
+		Gui, Main:Add, Text, vMode w30, None
+		Gui, Main:Show, w500 h500
 		;clear mouse clicks to target by sending UP to the keys
 		ControlClick, , ahk_id %id%, ,Right, , NAU
 		ControlClick, , ahk_id %id%, ,Left, ,NAU
@@ -111,6 +117,18 @@ MenuFileOpen:
 	Return
 }
 ;===================================================================================================
+ShowGUI:
+{
+	Gui, Main:Show, w500 h500
+	return
+}
+;===================================================================================================
+HideGUI:
+{
+	Gui, Main:Hide
+	return
+}
+;===================================================================================================
 MenuHandler:
 {
 	Return
@@ -122,17 +140,17 @@ MenuFishing:
 	; Stop and current active AHK process
 	BreakLoop := 1
 
-		Gui, Destroy
-		Gui, Show, w500 h500, Temp
-		Gui, Menu, ClickerMenu
-		Gui, Add, Text,, Target Window Title : %targettitle%
-		Gui, Add, Text,, Windows HWIND is : %id%
-		Gui, Add, Text,, CURRENT AVALIBLE OPTIONS: 
-		Gui, Add, Text,, o- Pressing ctrl + alt + f will start fishing
-		Gui, Add, Text,, o- Pressing ctrl + alt + s will stop any AutoKey funtion above
-		Gui, Add, Text,, 
-		Gui, Add, Slider, vMySlider w200 ToolTip Range0-1000 TickInterval100, 500 
-		Gui, Show,, Minecraft X-AHK V0.4
+		Gui, Main:Destroy
+		Gui, Main:New ,, Minecraft X-AHK V0.4 ;Using New allows all GUI commands to be done before showing GUI
+		Gui, Main:Menu, ClickerMenu
+		Gui, Main:Add, Text,, Target Window Title : %targettitle%
+		Gui, Main:Add, Text,, Windows HWIND is : %id%
+		Gui, Main:Add, Text,, CURRENT AVALIBLE OPTIONS: 
+		Gui, Main:Add, Text,, o- Pressing ctrl + alt + f will start fishing
+		Gui, Main:Add, Text,, o- Pressing ctrl + alt + s will stop any AutoKey funtion above
+		Gui, Main:Add, Text,, 
+		Gui, Main:Add, Slider, vMySlider w200 ToolTip Range0-1000 TickInterval100, 500 
+		Gui, Main:Show, w500 h500
 
 	ProgState := 2
 	Return
@@ -144,15 +162,15 @@ MenuAFK:
 	; Stop and current active AHK process
 	BreakLoop := 1
 
-	Gui, Destroy
-	Gui, Show, w500 h500, Temp
-	Gui, Menu, ClickerMenu
-	Gui, Add, Text,, Target Window Title : %targettitle%
-	Gui, Add, Text,, Windows HWIND is : %id%
-	Gui, Add, Text,, CURRENT AVALIBLE OPTIONS: 
-	Gui, Add, Text,, o- Pressing ctrl + alt + m will start Mod Grinding
-	Gui, Add, Text,, o- Pressing ctrl + alt + s will stop any AutoKey funtion above
-	Gui, Show,, Minecraft X-AHK V0.4
+	Gui, Main:Destroy
+	Gui, Main:New ,, Minecraft X-AHK V0.4 ;Using New allows all GUI commands to be done before showing GUI
+	Gui, Main:Menu, ClickerMenu
+	Gui, Main:Add, Text,, Target Window Title : %targettitle%
+	Gui, Main:Add, Text,, Windows HWIND is : %id%
+	Gui, Main:Add, Text,, CURRENT AVALIBLE OPTIONS: 
+	Gui, Main:Add, Text,, o- Pressing ctrl + alt + m will start Mod Grinding
+	Gui, Main:Add, Text,, o- Pressing ctrl + alt + s will stop any AutoKey funtion above
+	Gui, Main:Show, w500 h500
 	
 	ProgState := 4
 	Return
@@ -164,15 +182,15 @@ MenuConcrete:
 	; Stop and current active AHK process
 	BreakLoop := 1
 
-	Gui, Destroy
-	Gui, Show, w500 h500, Temp
-	Gui, Menu, ClickerMenu
-	Gui, Add, Text,, Target Window Title : %targettitle%
-	Gui, Add, Text,, Windows HWIND is : %id%
-	Gui, Add, Text,, CURRENT AVALIBLE OPTIONS: 
-	Gui, Add, Text,, o- Pressing ctrl + alt + c will start concrete farming
-	Gui, Add, Text,, o- Pressing ctrl + alt + s will stop any AutoKey funtion above
-	Gui, Show,, Minecraft X-AHK V0.4
+	Gui, Main:Destroy
+	Gui, Main:New ,, Minecraft X-AHK V0.4 ;Using New allows all GUI commands to be done before showing GUI
+	Gui, Main:Menu, ClickerMenu
+	Gui, Main:Add, Text,, Target Window Title : %targettitle%
+	Gui, Main:Add, Text,, Windows HWIND is : %id%
+	Gui, Main:Add, Text,, CURRENT AVALIBLE OPTIONS: 
+	Gui, Main:Add, Text,, o- Pressing ctrl + alt + c will start concrete farming
+	Gui, Main:Add, Text,, o- Pressing ctrl + alt + s will stop any AutoKey funtion above
+	Gui, Main:Show, w500 h500
 
 	ProgState := 3
 	Return
@@ -184,14 +202,14 @@ MenuJumpFly:
 	; Stop and current active AHK process
 	BreakLoop := 1
 
-	Gui, Destroy
-	Gui, Show, w500 h500, Temp
-	Gui, Menu, ClickerMenu
-	Gui, Add, Text,, Target Window Title : %targettitle%
-	Gui, Add, Text,, Windows HWIND is : %id%
-	Gui, Add, Text,, CURRENT AVALIBLE OPTIONS: 
-	Gui, Add, Text,, o- Pressing ctrl + alt + e will dubble hit space and fire a rocket in main hand
-	Gui, Show,, Minecraft X-AHK V0.4
+	Gui, Main:Destroy
+	Gui, Main:New ,, Minecraft X-AHK V0.4 ;Using New allows all GUI commands to be done before showing GUI
+	Gui, Main:Menu, ClickerMenu
+	Gui, Main:Add, Text,, Target Window Title : %targettitle%
+	Gui, Main:Add, Text,, Windows HWIND is : %id%
+	Gui, Main:Add, Text,, CURRENT AVALIBLE OPTIONS: 
+	Gui, Main:Add, Text,, o- Pressing ctrl + alt + e will dubble hit space and fire a rocket in main hand
+	Gui, Main:Show, w500 h500
 
 	ProgState := 1
 	Return
