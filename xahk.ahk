@@ -17,26 +17,28 @@ ProgState := 0
 ;===================================================================================================
 ;List of ProgState's
 ;
-; 0: Start			- Program called for first time and setting default state. Hotkeys set, menu
-;						configured and default welcome GUI
-; 1: Selected		- User has selected the target window to send key/mouse activity too
-;						will use option Menu to slect mode. Note that JumpFlying is only
-;						avalible while in this state!
-; 2: FishingMode	- Enter Fishing Mode
-; 3: ConcreteMode	- Enter Concrete Mode
-; 4: MobGrindMode	- Enter Mob Grinder Mode
+; 0: Start						- Program called for first time and setting default state. Hotkeys set, menu
+;									configured and default welcome GUI
+; 1: Selected					- User has selected the target window to send key/mouse activity too
+;									will use option Menu to slect mode. Note that JumpFlying is only
+;									avalible while in this state!
+; 2: FishingMode				- Enter Fishing Mode
+; 3: ConcreteMode				- Enter Concrete Mode
+; 4: MobGrindMode				- Enter Mob Grinder Mode
+; 5: RegenBeaconMobGrindMode	- Enter Regen Beacon (Left Click-Only) Mob Grinder Mode
 
 ;===================================================================================================
 ;Shortcuts
 ;===================================================================================================
-Hotkey	!^f,	Fishing			; Pressing ctrl + alt + f will start fishing
-Hotkey  !^e,	JumpFly			; Pressing ctrl + alt + e will dubble hit space and fire a rockct in
-								; main hand
-Hotkey  !^c,	Concrete		; Pressing ctrl + alt + c will start concrete farming
-Hotkey  !^m,	MobGrind		; Pressing ctrl + alt + m will start mob grinding
-Hotkey	!^s,	Stop			; Pressing ctrl + alt + s will stop it
-Hotkey  !^w,    SelectWindow 	;Allows user to select window to control by hovering mouse over it and
-								;Pressing ctrl + alt + w
+Hotkey	!^f,	Fishing				; Pressing ctrl + alt + f will start fishing
+Hotkey  !^e,	JumpFly				; Pressing ctrl + alt + e will dubble hit space and fire a rockct in
+									; main hand
+Hotkey  !^c,	Concrete			; Pressing ctrl + alt + c will start concrete farming
+Hotkey  !^m,	MobGrind			; Pressing ctrl + alt + m will start mob grinding
+Hotkey  !^r,	RegenBeaconMobGrind ; Pressing ctrl + alt + r will start mob grinding with left click only
+Hotkey	!^s,	Stop				; Pressing ctrl + alt + s will stop it
+Hotkey  !^w,    SelectWindow 		;Allows user to select window to control by hovering mouse over it and
+									;Pressing ctrl + alt + w
 
 ;===================================================================================================
 ;Menu
@@ -46,6 +48,7 @@ Menu, FileMenu, Add, Exit, MenuHandler
 Menu, HelpMenu, Add, About, MenuHandler
 Menu, OptionsMenu, Add, Fishing, MenuFishing
 Menu, OptionsMenu, Add, AFK Mob, MenuAFK
+Menu, OptionsMenu, Add, Regen Beacon AFK Mob, MenuRegenBeaconAFK
 Menu, OptionsMenu, Add, Concrete, MenuConcrete
 Menu, OptionsMenu, Add, JumpFlying, MenuJumpFly
 Menu, ClickerMenu, Add, File, :FileMenu
@@ -150,11 +153,31 @@ MenuAFK:
 	Gui, Add, Text,, Target Window Title : %targettitle%
 	Gui, Add, Text,, Windows HWIND is : %id%
 	Gui, Add, Text,, CURRENT AVALIBLE OPTIONS: 
-	Gui, Add, Text,, o- Pressing ctrl + alt + m will start Mod Grinding
+	Gui, Add, Text,, o- Pressing ctrl + alt + m will start Mob Grinding
 	Gui, Add, Text,, o- Pressing ctrl + alt + s will stop any AutoKey funtion above
 	Gui, Show,, Minecraft X-AHK V0.4
 	
 	ProgState := 4
+	Return
+}
+;===================================================================================================
+; Switch to Regen Beacon AFK mode and update window
+MenuRegenBeaconAFK:
+{
+	; Stop and current active AHK process
+	BreakLoop := 1
+
+	Gui, Destroy
+	Gui, Show, w500 h500, Temp
+	Gui, Menu, ClickerMenu
+	Gui, Add, Text,, Target Window Title : %targettitle%
+	Gui, Add, Text,, Windows HWIND is : %id%
+	Gui, Add, Text,, CURRENT AVALIBLE OPTIONS: 
+	Gui, Add, Text,, o- Pressing ctrl + alt + r will start Mob Grinding, with left click only
+	Gui, Add, Text,, o- Pressing ctrl + alt + s will stop any AutoKey funtion above
+	Gui, Show,, Minecraft X-AHK V0.4
+	
+	ProgState := 5
 	Return
 }
 ;===================================================================================================
@@ -308,6 +331,40 @@ MobGrind:
 	Sleep 100
 	;Force mouse keys UP at exit
 	ControlClick, , ahk_id %id%, ,Right, , NAU
+	ControlClick, , ahk_id %id%, ,Left, ,NAU
+	Return
+}
+;==================================================================================================
+; Called when Ctrl+Alt+r is pressed
+RegenBeaconMobGrind:
+{
+	if (ProgState != 5)
+		Return
+		
+	BreakLoop := 0
+	Delay := 0
+	Sleep 500
+	While (BreakLoop = 0)
+	{
+		Sleep 100 ;100 ms
+		;Delay between LEFT clicks is controled by sleep delay above * value tested here (ie 12)
+		; Example = 100ms * 12 = 1.2 seconds
+		;This method allows AHK to better exit this mode and respond quicker to Stop command
+		if (Delay >= 12)
+		{
+			; If delay counter reached, reset counter and send a LEFT click
+			Delay := 0
+			sleep 50
+			ControlClick, , ahk_id %id%, ,Left, ,NAD
+			Sleep 50
+			ControlClick, , ahk_id %id%, ,Left, ,NAU	
+		}
+		else
+			Delay++ ;Increase delay counter by 1
+		
+	}
+	Sleep 100
+	;Force mouse keys UP at exit
 	ControlClick, , ahk_id %id%, ,Left, ,NAU
 	Return
 }
