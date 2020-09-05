@@ -26,7 +26,7 @@ Allows running the Minecraft game client while the user is away from the compute
 - AFK Concrete Convertion
 - AFK Mob Grinding
 =======
-Allows client opperation of player will user is away from computer. X-AHK will send a stream of keybaord and mouse inputs to a target window as if the user was opperating the player. features include:<br>
+Allows client operation of player will user is away from computer. X-AHK will send a stream of keybaord and mouse inputs to a target window as if the user was operating the player. features include:<br>
 AFK Fishing, AFK Concrete Convertion & AFK Mob Grinder
 
 
@@ -44,7 +44,7 @@ To continue development past inital concept design and release to a release that
 
 ## Next Phase - Release 1.0
 Added GUI<br>
-Multi Instant Opperation<br>
+Multi Instant Operation<br>
 Bug Fixes<br>
 
 ## Platform Support
