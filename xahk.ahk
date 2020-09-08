@@ -96,7 +96,7 @@ SelectWindow:
 	Else
 	{
 		;Class of target program not a match so give warning message
-		MsgBox, You do not seam to have selected a Minecraft window. Please check before you continue.
+		MsgBox, You do not seem to have selected a Minecraft window. Please check before you continue.
 	}
 	Return
 }
