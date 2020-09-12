@@ -26,6 +26,7 @@ ProgState := 0
 ; 3: KillingMode	- Enter Killing Mode
 ; 4: ConcreteMode	- Enter Concrete Mode
 ; 5: MobGrindMode	- Enter Mob Grinder Mode
+; 6: CampFireCookingMode	- Enter Camp Fire Cooking Mode
 
 ;===================================================================================================
 ;Shortcuts
@@ -36,6 +37,7 @@ Hotkey  !^e,	JumpFly			; Pressing ctrl + alt + e will dubble hit space and fire 
 								; main hand
 Hotkey  !^c,	Concrete		; Pressing ctrl + alt + c will start concrete farming
 Hotkey  !^m,	MobGrind		; Pressing ctrl + alt + m will start mob grinding
+Hotkey	!^l,	CampFireCooking			; Pressing ctrl + alt + l will start camp fire cooking
 Hotkey	!^s,	Stop			; Pressing ctrl + alt + s will stop it
 Hotkey  !^w,    SelectWindow 	;Allows user to select window to control by hovering mouse over it and
 								;Pressing ctrl + alt + w
@@ -51,6 +53,7 @@ Menu, OptionsMenu, Add, MobKill, MenuMobKill
 Menu, OptionsMenu, Add, AFK Mob, MenuAFK
 Menu, OptionsMenu, Add, Concrete, MenuConcrete
 Menu, OptionsMenu, Add, JumpFlying, MenuJumpFly
+Menu, OptionsMenu, Add, CampFireCooking, MenuCampFireCooking
 Menu, ClickerMenu, Add, File, :FileMenu
 Menu, ClickerMenu, Add, Help, :HelpMenu
 Menu, ClickerMenu, Add, Options, :OptionsMenu
@@ -230,6 +233,28 @@ MenuJumpFly:
 	Return
 }
 ;===================================================================================================
+; Switch to CampFireCooking mode and update window
+MenuCampFireCooking:
+{
+	; Stop and current active AHK process
+	BreakLoop := 1
+
+		Gui, Destroy
+		Gui, Show, w500 h500, Temp
+		Gui, Menu, ClickerMenu
+		Gui, Add, Text,, Target Window Title : %targettitle%
+		Gui, Add, Text,, Windows HWIND is : %id%
+		Gui, Add, Text,, With CampFireCooking active, your mouse will simulate a Right click every 31 seconds.
+		Gui, Add, Text,, CURRENT AVALIBLE OPTIONS:
+		Gui, Add, Text,, Pressing ctrl + alt + l will start Camp Fire Cooking
+		Gui, Add, Text,, Pressing ctrl + alt + s will stop any AutoKey funtion above
+		Gui, Add, Text,,
+		Gui, Show,, Minecraft X-AHK V0.4
+
+	ProgState := 6
+	Return
+}
+;===================================================================================================
 ; Called when Ctrl+Alt+E is pressed.
 ; NOTE: Target window MUST be in focus for this to work
 JumpFly:
@@ -365,6 +390,29 @@ MobGrind:
 	;Force mouse keys UP at exit
 	ControlClick, , ahk_id %id%, ,Right, , NAU
 	ControlClick, , ahk_id %id%, ,Left, ,NAU
+	Return
+}
+;===================================================================================================
+; Called when Ctrl+Alt+l is pressed and continuly clicks Right mouse Button ever 31 seconds.
+CampFireCooking:
+{
+	if (ProgState != 6)
+		Return
+
+	BreakLoop := 0
+		Loop
+		{
+			if (BreakLoop = 1)
+			{
+				BreakLoop := 0
+				break
+			}
+
+			Sleep 500
+				ControlClick, , ahk_id %id%, ,Right, , NAD
+			Sleep 100
+				ControlClick, , ahk_id %id%, ,Right, , NAU
+		}
 	Return
 }
 ;==================================================================================================
