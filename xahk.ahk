@@ -131,7 +131,7 @@ MenuFishing:
 		Gui, Add, Text,, o- Pressing ctrl + alt + f will start fishing
 		Gui, Add, Text,, o- Pressing ctrl + alt + s will stop any AutoKey funtion above
 		Gui, Add, Text,, 
-		Gui, Add, Slider, vMySlider w200 ToolTip Range0-1000 TickInterval100, 500 
+		Gui, Add, Slider, vMySlider gMySlider w200 ToolTip Range0-1000 TickInterval100, MySlider
 		Gui, Show,, Minecraft X-AHK V0.4
 
 	ProgState := 2
@@ -245,6 +245,13 @@ Concrete:
 }
 ;===================================================================================================
 ; Called when Ctrl+Alt+F is pressed and continuly clicks RIGHT mouse key
+MySlider:
+{
+	Gui, Submit, nohide ; MsgBox, %MySlider% 
+
+	Return 	
+}
+
 Fishing:
 {
 	if (ProgState != 2)
@@ -258,11 +265,12 @@ Fishing:
 				BreakLoop := 0
 				break
 			}
-
-			Sleep 100
+			
+			Sleep %MySlider%
 				ControlClick, , ahk_id %id%, ,Right, , NAD
-			Sleep 500
+			Sleep 100
 				ControlClick, , ahk_id %id%, ,Right, , NAU
+			
 		}
 	Return
 }
