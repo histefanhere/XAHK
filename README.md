@@ -1,12 +1,12 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/histefanhere/XAHK/master/logo.png" height="300" alt="XAHK logo">
+    <img src="https://raw.githubusercontent.com/histefanhere/minescript/master/logo.png" height="300" alt="XAHK logo">
 </p>
 <p align="center">
-  <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/Histefanhere/XAHK?include_prereleases">
-  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/Histefanhere/XAHK">
-  <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/histefanhere/XAHK/total?logo=GitHub">
-  <img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed/Histefanhere/XAHK">
-  <img alt="GitHub" src="https://img.shields.io/github/license/Histefanhere/XAHK">
+  <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/histefanhere/minescript?include_prereleases">
+  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/histefanhere/minescript">
+  <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/histefanhere/minescript/total?logo=GitHub">
+  <img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed/histefanhere/minescript">
+  <img alt="GitHub" src="https://img.shields.io/github/license/histefanhere/minescript">
 </p>
 
 
@@ -34,7 +34,7 @@ The biggest feature is that you can use other apps on your comptuer while Minesc
 
 ## Installation and Usage
 1. Download and Install AutoHotkey from their [official website](https://www.autohotkey.com/)
-2. Download the latest release of the Minescript executable form the [releases page](https://github.com/histefanhere/XAHK/releases)
+2. Download the latest release of the Minescript executable form the [releases page](https://github.com/histefanhere/minescript/releases)
 3. Run the executable and follow the on-screen instructions; the [YouTube video](https://youtu.be/-wKW0OovGK4?t=280) by [xisumavoid](https://www.youtube.com/channel/UCU9pX8hKcrx06XfOB-VQLdw) also contains some additional instructions.
 
 
@@ -57,7 +57,7 @@ Mac players can use MacOS's built-in accessibiltiy features and a full-size keyb
 
 
 ## License
-As Minescript is a fork of XAHK, it is licensed under the terms of the GPL Open Source license and is available for free. View the [LICENSE](https://github.com/histefanhere/XAHK/blob/master/LICENSE) document for more details.
+As Minescript is a fork of XAHK, it is licensed under the terms of the GPL Open Source license and is available for free. View the [LICENSE](https://github.com/histefanhere/minescript/blob/master/LICENSE) document for more details.
 
 
 ## Links
