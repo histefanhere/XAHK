@@ -5,30 +5,32 @@ Over the last few months I have left this project on hold due to IRL issues, how
 
 # XAHK
 Auto Key Clicker for Minecraft - Under request from Xisuma<br>
-Developed for use with vanilla Minecraft and tested with 1.14, 1.15<br>
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/monpjc/XAHK)](https://github.com/monpjc/XAHK/releases)
-[![LICENSE](https://img.shields.io/github/license/monpjc/XAHK)](https://github.com/monpjc/XAHK/blob/master/LICENSE)
+Developed for use with vanilla Minecraft and tested with 1.14, 1.15
+
+<p align="center">
+  <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/Histefanhere/XAHK?include_prereleases">
+  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/Histefanhere/XAHK">
+  <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/histefanhere/XAHK/total?logo=GitHub">
+  <img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed/Histefanhere/XAHK">
+  <img alt="GitHub" src="https://img.shields.io/github/license/Histefanhere/XAHK">
+</p>
 
 ## Table of contents
 
-- [Features](#Features)
-- [Aim of project](#Aim-of-project)
-- [Installation and Usage](#Installation-and-Usage)
-- [YouTube Video](#YouTube-Video)
-- [Next Phase of Project](#Next-Phase----Release-1.0)
-- [License](#License)
-- [Links](#Links)
+- [Features](#features)
+- [Aim of project](#aim-of-project)
+- [Installation and Usage](#installation-and-usage)
+- [YouTube Video](#youtube-video)
+- [Next Phase of Project](#next-phase---release-10)
+- [License](#license)
+- [Links](#links)
 
 ## Features
 
-Allows running the Minecraft game client while the user is away from the computer (Windows only). X-AHK will send a stream of keyboard and mouse inputs to a target game window as if the user was playing the game. Features include:<br>
+Allows running the Minecraft game client while the user is away from the computer (Windows only). X-AHK will send a stream of keyboard and mouse inputs to a target game window as if the user was playing the game. Features include:
 - AFK Fishing
 - AFK Concrete Convertion
 - AFK Mob Grinding
-<br>=======<br>
-Allows client operation of player will user is away from computer. X-AHK will send a stream of keybaord and mouse inputs to a target window as if the user was operating the player. Features include:<br>
-AFK Fishing, AFK Concrete Convertion & AFK Mob Grinder
-
 
 ## Aim of project
 To continue development past inital concept design and release to a release that includes GUI and user preferences of key input timings.
@@ -41,7 +43,7 @@ To continue development past inital concept design and release to a release that
 
 ## YouTube Video
 [![YouTube](https://img.youtube.com/vi/-wKW0OovGK4/0.jpg)](https://youtu.be/-wKW0OovGK4?t=280 "Click to play on YouTube")
-
+  
 ## Next Phase - Release 1.0
 Added GUI<br>
 Multi Instant Operation<br>
