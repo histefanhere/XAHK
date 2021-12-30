@@ -25,8 +25,8 @@ Allows running the Minecraft game client while the user is away from the compute
 - AFK Fishing
 - AFK Concrete Convertion
 - AFK Mob Grinding
-=======
-Allows client opperation of player will user is away from computer. X-AHK will send a stream of keybaord and mouse inputs to a target window as if the user was opperating the player. features include:<br>
+<br>=======<br>
+Allows client operation of player will user is away from computer. X-AHK will send a stream of keybaord and mouse inputs to a target window as if the user was operating the player. Features include:<br>
 AFK Fishing, AFK Concrete Convertion & AFK Mob Grinder
 
 
@@ -44,7 +44,7 @@ To continue development past inital concept design and release to a release that
 
 ## Next Phase - Release 1.0
 Added GUI<br>
-Multi Instant Opperation<br>
+Multi Instant Operation<br>
 Bug Fixes<br>
 
 ## Platform Support
@@ -55,8 +55,8 @@ Linux players may find an alternative by using a [shell script](https://www.redd
 Mac players can use macOS's built-in accessibiltiy features and a full-size keyboard with a numeric keypad:
 1. Open System Preferences.
 2. Go to Accessibility → Pointer Control → Alternate Control Methods and enable "Mouse Keys".
-3. In Minecraft, position your avatar for the activity (fishing, for example) and press ⌃5️⃣ (control+5, on the numpad) to send a "right click".
-4. Now tap 0️⃣ (on the numpad) to simulate "hold right click"; note that you cannot switch applications as with XAHK.
+3. In Minecraft, position your avatar for the activity (fishing, for example) and press ⌃5️⃣  (control+5, on the numpad) to send a "right click".
+4. Now tap 0️⃣  (on the numpad) to simulate "hold right click"; note that you cannot switch applications as with XAHK.
 
 
 ## License
