@@ -96,7 +96,8 @@ SelectWindow:
 		Gui, Main:Add, Text, , CURRENT MODE:"
 		Gui, Main:Add, Text, W370 R3 vReminderText, "To change mode of operation please select from Option menu."
 		Gui, Main:Add, Text, ,
-		Gui, Add, Slider, vMySlider W375 ToolTip Range0-1000 TickInterval100, 500
+		Gui, Add, Slider, vMySlider gOnSliderChange W375 ToolTip Range0-1000 TickInterval100, 100
+		Gui, Submit, NoHide ; Submits the slider so the default takes action
 
 		; Right GUI element group
 		Gui, Main:Add, Text, X150 Y15 vtargettitleText, %targettitle%
@@ -148,6 +149,13 @@ HideGUI:
 ;===================================================================================================
 MenuHandler:
 {
+	Return
+}
+
+; When the slider value is changed, 'submit' the GUI which saves all the values to their variables and hence gets the value of the slider.
+OnSliderChange:
+{
+	Gui, Submit, NoHide
 	Return
 }
 
@@ -288,9 +296,9 @@ Fishing:
 			Break
 		}
 
-		Sleep 100
+		Sleep %MySlider%
 		ControlClick, , ahk_id %id%, ,Right, , NAD
-		Sleep 500
+		Sleep 100
 		ControlClick, , ahk_id %id%, ,Right, , NAU
 	}
 	Return
