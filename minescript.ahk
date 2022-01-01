@@ -22,6 +22,7 @@ ProgState := 0
 ; 2: FishingMode	  - Enter Fishing Mode
 ; 3: ConcreteMode	  - Enter Concrete Mode
 ; 4: MobGrindMode	  - Enter Mob Grinder Mode
+; 5: KillingMode	  - Enter Killing Mode
 
 
 ; Hotkeys
@@ -29,6 +30,7 @@ Hotkey	!^f,	Fishing			; Pressing ctrl + alt + f will start fishing
 Hotkey  !^e,	JumpFly			; Pressing ctrl + alt + e will dubble hit space and fire a rockct in main hand
 Hotkey  !^c,	Concrete		; Pressing ctrl + alt + c will start concrete farming
 Hotkey  !^m,	MobGrind		; Pressing ctrl + alt + m will start mob grinding
+Hotkey	!^k,	MobKill			; Pressing ctrl + alt + k will start mob killing
 Hotkey	!^s,	Stop			; Pressing ctrl + alt + s will stop it
 Hotkey  !^w,    SelectWindow 	; Allows user to select window to control by hovering mouse over it and pressing ctrl + alt + w
 
@@ -48,6 +50,7 @@ Menu, OptionsMenu, Add, Fishing, MenuFishing
 Menu, OptionsMenu, Add, AFK Mob, MenuAFK
 Menu, OptionsMenu, Add, Concrete, MenuConcrete
 Menu, OptionsMenu, Add, JumpFlying, MenuJumpFly
+Menu, OptionsMenu, Add, MobKill, MenuMobKill
 
 Menu, ClickerMenu, Add, File, :FileMenu
 Menu, ClickerMenu, Add, Help, :HelpMenu
@@ -63,7 +66,16 @@ If (%ProgState% != 0)
 }
 
 Gui, Start:Show, Center W300 H300, %wintitle%
-Gui, Start:Add, Pic, W280 H290 vpic_get, welcomepic.png
+; Gui, Start:Add, Pic, W280 H290 vpic_get, welcomepic.png
+If FileExist("welcomepic.png")
+{
+	Gui, Start:Add, Pic, W280 H290 vpic_get, welcomepic.png
+}
+Else
+{
+	Gui, Start:Add, Text, , Select Minecraft Window and press Ctrl+Alt+W
+}
+; Gui, Add, Text, , %SplashPic%
 Return
 
 ;===================================================================================================
@@ -93,11 +105,10 @@ SelectWindow:
 		; Left GUI element group
 		Gui, Main:Add, Text, X10 Y15 , Target Window Title :
 		Gui, Main:Add, Text, , Windows HWIND is :
-		Gui, Main:Add, Text, , CURRENT MODE:"
-		Gui, Main:Add, Text, W370 R3 vReminderText, "To change mode of operation please select from Option menu."
+		Gui, Main:Add, Text, , CURRENT MODE:
+		Gui, Main:Add, Text, W370 R3 vReminderText, To change mode of operation please select from Option menu.
 		Gui, Main:Add, Text, ,
-		Gui, Add, Slider, vMySlider gOnSliderChange W375 ToolTip Range0-1000 TickInterval100, 100
-		Gui, Submit, NoHide ; Submits the slider so the default takes action
+		Gui, Add, Slider, vMySlider gOnSliderChange W375 ToolTip Range0-1000 TickInterval100, MySlider
 
 		; Right GUI element group
 		Gui, Main:Add, Text, X150 Y15 vtargettitleText, %targettitle%
@@ -149,6 +160,7 @@ HideGUI:
 ;===================================================================================================
 MenuHandler:
 {
+	; TODO: About menu action here
 	Return
 }
 
@@ -185,7 +197,7 @@ MenuAFK:
 	; Uses `n to insert line feeds in multi line text box.
 	GuiControl, Main:Text, Mode, AFK Mob
 	GuiControl, Main:Hide, MySlider
-	GuiControl, Main:Text, ReminderText,	CURRENT AVALIBLE OPTIONS:`no- Pressing ctrl + alt + m will start Mod Grinding`no- Pressing ctrl + alt + s will stop any AutoKey function above
+	GuiControl, Main:Text, ReminderText, CURRENT AVALIBLE OPTIONS:`no- Pressing ctrl + alt + m will start Mob Grinding`no- Pressing ctrl + alt + s will stop any AutoKey function above
 
 	ProgState := 4
 	Return
@@ -201,7 +213,7 @@ MenuConcrete:
 	; Uses `n to insert line feeds in multi line text box.
 	GuiControl, Main:Text, Mode, Concrete
 	GuiControl, Main:Hide, MySlider
-	GuiControl, Main:Text, ReminderText,	CURRENT AVALIBLE OPTIONS:`no- Pressing ctrl + alt + c will start concrete farming`no- Pressing ctrl + alt + s will stop any AutoKey function above
+	GuiControl, Main:Text, ReminderText, CURRENT AVALIBLE OPTIONS:`no- Pressing ctrl + alt + c will start concrete farming`no- Pressing ctrl + alt + s will stop any AutoKey function above
 
 	ProgState := 3
 	Return
@@ -217,9 +229,21 @@ MenuJumpFly:
 	; Uses `n to insert line feeds in multi line text box.
 	GuiControl, Main:Text, Mode, JumpFly
 	GuiControl, Main:Hide, MySlider
-	GuiControl, Main:Text, ReminderText,	CURRENT AVALIBLE OPTIONS:`no- Pressing ctrl + alt + e will double hit space and fire a rocket in main hand
+	GuiControl, Main:Text, ReminderText, CURRENT AVALIBLE OPTIONS:`no- Pressing ctrl + alt + e will double hit space and fire a rocket in main hand
 
 	ProgState := 1
+	Return
+}
+
+MenuMobKill:
+{
+	BreakLoop := 1
+
+	GuiControl, Main:Text, Mode, MobKill
+	GuiControl, Main:Hide, MySlider
+	GuiControl, Main:Text, ReminderText, CURRENT AVALIBLE OPTIONS:`no- Pressing ctrl + alt + k will start killing mobs`no- Pressing ctrl + alt + s will stop any AutoKey function above
+
+	ProgState := 5
 	Return
 }
 
@@ -355,6 +379,43 @@ MobGrind:
 	Return
 }
 
+MobKill:
+{
+	if (ProgState != 5)
+	{
+		Return
+	}
+
+	BreakLoop := 0
+	Delay := 0
+	Sleep 500
+	While (BreakLoop = 0)
+	{
+		Sleep 100 ;100 ms
+		; Delay between LEFT clicks is controled by sleep delay above * value tested here (ie 12)
+		; Example = 100ms * 12 = 1.2 seconds
+		; This method allows AHK to better exit this mode and respond quicker to Stop command
+		If (Delay >= 12)
+		{
+			; If delay counter reached, reset counter and send a LEFT click
+			Delay := 0
+			Sleep 50
+			ControlClick, , ahk_id %id%, , Left, , NAD
+			Sleep 50
+			ControlClick, , ahk_id %id%, , Left, , NAU
+		}
+		Else
+		{
+			Delay++ ; Increase delay counter by 1
+		}
+	}
+
+	Sleep 100
+	; Force mouse keys UP at exit
+	ControlClick, , ahk_id %id%, , Left, , NAU
+	Return
+}
+
 ;==================================================================================================
 ; Called when Ctrl+Alt+S is pressed at ANYTIME
 ; By setting the globle value of 'BreakLoop' to 1 this causes any running mode to exit under its own
@@ -364,7 +425,7 @@ Stop:
 {
 	BreakLoop := 1
 	ControlClick, , ahk_id %id%, ,Right, , NAU
-	ControlClick, , ahk_id %id%, ,Left, ,NAU
+	ControlClick, , ahk_id %id%, ,Left, , NAU
 	Sleep 500
 	Return
 }
