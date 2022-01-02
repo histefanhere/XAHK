@@ -8,6 +8,7 @@ SetWorkingDir %A_ScriptDir%
 
 ; Global variables
 wintitle := "Minescript v0.4"
+DEBUG := False
 targetwinclass := "GLFW30" ; This is the Class of a Java program used to check we have a Minecraft program
 targettitle := ""
 ModeText := ""
@@ -88,8 +89,11 @@ SelectWindow:
 	WinGetTitle, targettitle, ahk_id %id%
 	WinGetClass, targetclass, ahk_id %id%
 
-	; DEBUGGING: Show information about the window such as it's title, ID, class, etc.
-	MsgBox, ahk_id %id%`nahk_class %targetclass%`n%targettitle%`nControl: %control%
+	If (DEBUG)
+	{
+		; Show information about the window such as it's title, ID, class, etc.
+		MsgBox, ahk_id %id%`nahk_class %targetclass%`n%targettitle%`nControl: %control%
+	}
 
 	; TODO: Get rid of this check maybe? Does this even work?
 	;       maybe ask the user if they know what they're doing and continue or quit the program?
