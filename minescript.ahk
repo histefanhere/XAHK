@@ -36,7 +36,7 @@ Hotkey  !^w,    SelectWindow 	; Allows user to select window to control by hover
 
 
 ; Menu Setup
-Menu, Tray, icon, logo.ico
+Menu, Tray, icon, ./assets/logo.ico
 Menu, Tray, Add ; Adds sepearter line
 Menu, Tray, Add, UnHide, ShowGUI
 
@@ -67,9 +67,9 @@ If (%ProgState% != 0)
 
 Gui, Start:Show, Center W300 H300, %wintitle%
 ; Gui, Start:Add, Pic, W280 H290 vpic_get, welcomepic.png
-If FileExist("welcomepic.png")
+If FileExist("./assets/welcome.png")
 {
-	Gui, Start:Add, Pic, W280 H290 vpic_get, welcomepic.png
+	Gui, Start:Add, Pic, W280 H290 vpic_get, ./assets/welcome.png
 }
 Else
 {
