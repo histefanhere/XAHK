@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/histefanhere/minescript/master/logo.png" height="300" alt="XAHK logo">
+    <img src="https://raw.githubusercontent.com/histefanhere/minescript/master/assets/logo.png" height="300" alt="XAHK logo">
 </p>
 <p align="center">
   <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/histefanhere/minescript?include_prereleases">
