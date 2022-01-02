@@ -7,7 +7,7 @@ SetWorkingDir %A_ScriptDir%
 
 
 ; Global variables
-wintitle := "Minescript v0.4"
+wintitle := "Minescript v0.5"
 DEBUG := False
 targetwinclass := "GLFW30" ; This is the Class of a Java program used to check we have a Minecraft program
 targettitle := ""
