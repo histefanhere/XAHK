@@ -36,7 +36,7 @@ Hotkey  !^w,    SelectWindow 	; Allows user to select window to control by hover
 
 
 ; Menu Setup
-Menu, Tray, icon, XisumaVoid_Face.ico
+Menu, Tray, icon, logo.ico
 Menu, Tray, Add ; Adds sepearter line
 Menu, Tray, Add, UnHide, ShowGUI
 
