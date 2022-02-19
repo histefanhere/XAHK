@@ -5,6 +5,12 @@ SetTitleMatchMode 2
 #SingleInstance Force
 SetWorkingDir %A_ScriptDir%
 
+FileInstall, ./assets/welcome.png, %A_Temp%/minescript_welcome.png
+FileInstall, ./assets/logo.ico, %A_Temp%/minescript_logo.ico
+
+; These don't seem to be doing anything, the compiler won't listen to them :-(
+;@Ahk2Exe-SetMainIcon ./assets/logo.ico
+;@Ahk2Exe-ExeName Minescript
 
 ; Global variables
 wintitle := "Minescript v0.5"
@@ -37,7 +43,7 @@ Hotkey  !^w,    SelectWindow 	; Allows user to select window to control by hover
 
 
 ; Menu Setup
-Menu, Tray, icon, ./assets/logo.ico
+Menu, Tray, icon, %A_Temp%/minescript_logo.ico
 Menu, Tray, Add ; Adds sepearter line
 Menu, Tray, Add, UnHide, ShowGUI
 
@@ -67,16 +73,7 @@ If (%ProgState% != 0)
 }
 
 Gui, Start:Show, Center W300 H300, %wintitle%
-; Gui, Start:Add, Pic, W280 H290 vpic_get, welcomepic.png
-If FileExist("./assets/welcome.png")
-{
-	Gui, Start:Add, Pic, W280 H290 vpic_get, ./assets/welcome.png
-}
-Else
-{
-	Gui, Start:Add, Text, , Select Minecraft Window and press Ctrl+Alt+W
-}
-; Gui, Add, Text, , %SplashPic%
+Gui, Start:Add, Pic, W280 H290 vpic_get, %A_Temp%/minescript_welcome.png
 Return
 
 ;===================================================================================================
@@ -105,7 +102,7 @@ SelectWindow:
 		IfMsgBox, Cancel
 			ExitApp, 0
 	}
-	
+
 	; Target window found, swap to next screen
 	ProgState = 1
 	Gui, Start:Destroy
