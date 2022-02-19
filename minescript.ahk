@@ -95,47 +95,47 @@ SelectWindow:
 		MsgBox, ahk_id %id%`nahk_class %targetclass%`n%targettitle%`nControl: %control%
 	}
 
-	; TODO: Get rid of this check maybe? Does this even work?
-	;       maybe ask the user if they know what they're doing and continue or quit the program?
 	; Check if the class of the program is a Minecraft Java Class
-	If InStr(targetclass, targetwinclass)
-	{
-		; Target window found, swap to next screen
-		ProgState = 1
-		Gui, Start:Destroy
-		Gui, Main:New, , %wintitle%
-		Gui, Main:Menu, ClickerMenu
-
-		; Left GUI element group
-		Gui, Main:Add, Text, X10 Y15 , Target Window Title :
-		Gui, Main:Add, Text, , Windows HWIND is :
-		Gui, Main:Add, Text, , CURRENT MODE:
-		Gui, Main:Add, Text, W370 R3 vReminderText, To change mode of operation please select from Option menu.
-		Gui, Main:Add, Text, ,
-		Gui, Add, Slider, vMySlider gOnSliderChange W375 ToolTip Range0-1000 TickInterval100, MySlider
-
-		; Right GUI element group
-		Gui, Main:Add, Text, X150 Y15 vtargettitleText, %targettitle%
-		Gui, Main:Add, Text, vIDText, %id%
-		Gui, Main:Add, Text, vMode w100, None
-
-		GuiControl, Main:Hide, MySlider
-		Gui, Main: Show, H400 H210
-
-		; Clear mouse clicks to target by sending UP to the keys:
-		; - `Right` and `Left` specifies which mouse button to press
-		; - the `NA` option improves reliability when the window isn't active, and
-		; - the `U` letter sends an up-event
-		ControlClick, , ahk_id %id%, , Right, , NAU
-		ControlClick, , ahk_id %id%, , Left, , NAU
-		Sleep 500
-	}
-	Else
+	If (!InStr(targetclass, targetwinclass))
 	{
 		; Class of target program not a match so give a warning message
-		ErrorMsg := "You do not seem to have selected a Minecraft window. Please check before you continue."
-		MsgBox, %ErrorMsg%
+		ErrorTitle := "Warning"
+		ErrorMsg := "The window which you have selected is not Minecraft! It might be unsafe to use this program on anything other than Minecraft if you don't know what you're doing. Do you wish to continue?"
+		MsgBox, 0x31, %ErrorTitle%, %ErrorMsg%
+		IfMsgBox, Cancel
+			ExitApp, 0
 	}
+	
+	; Target window found, swap to next screen
+	ProgState = 1
+	Gui, Start:Destroy
+	Gui, Main:New, , %wintitle%
+	Gui, Main:Menu, ClickerMenu
+
+	; Left GUI element group
+	Gui, Main:Add, Text, X10 Y15 , Target Window Title :
+	Gui, Main:Add, Text, , Windows HWIND is :
+	Gui, Main:Add, Text, , CURRENT MODE:
+	Gui, Main:Add, Text, W370 R3 vReminderText, To change mode of operation please select from Option menu.
+	Gui, Main:Add, Text, ,
+	Gui, Add, Slider, vMySlider gOnSliderChange W375 ToolTip Range0-1000 TickInterval100, MySlider
+
+	; Right GUI element group
+	Gui, Main:Add, Text, X150 Y15 vtargettitleText, %targettitle%
+	Gui, Main:Add, Text, vIDText, %id%
+	Gui, Main:Add, Text, vMode w100, None
+
+	GuiControl, Main:Hide, MySlider
+	Gui, Main: Show, H400 H210
+
+	; Clear mouse clicks to target by sending UP to the keys:
+	; - `Right` and `Left` specifies which mouse button to press
+	; - the `NA` option improves reliability when the window isn't active, and
+	; - the `U` letter sends an up-event
+	ControlClick, , ahk_id %id%, , Right, , NAU
+	ControlClick, , ahk_id %id%, , Left, , NAU
+
+	Sleep 500
 	Return
 }
 
