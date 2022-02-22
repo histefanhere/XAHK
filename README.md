@@ -11,7 +11,7 @@
 
 
 # Minescript
-Fork of [XAHK](https://github.com/monpjc/XAHK), an Auto Key Clicker for Minecraft under request from [Xisumavoid](https://www.youtube.com/c/XisumavoidMC) that allows you to use your computer at the same time. Developed for use with vanilla Minecraft and works with all versions.
+Auto Key Clicker for Minecraft under request from [Xisumavoid](https://www.youtube.com/c/XisumavoidMC) that allows you to use your computer at the same time. Developed for use with vanilla Minecraft and works with all versions.
 
 
 ## Table of contents
@@ -29,6 +29,7 @@ Allows running the Minecraft game client and interacting with the world while th
 - AFK Fishing
 - AFK Concrete Convertion
 - AFK Mob Grinding
+- and more!
 
 The biggest feature is that you can use other apps on your comptuer while Minescript is running, all thanks to the power of AHK!
 
@@ -57,10 +58,10 @@ Mac players can use MacOS's built-in accessibiltiy features and a full-size keyb
 
 
 ## License
-As Minescript is a fork of XAHK, it is licensed under the terms of the GPL Open Source license and is available for free. View the [LICENSE](https://github.com/histefanhere/minescript/blob/master/LICENSE) document for more details.
+The script is licensed under the terms of the GPL Open Source license and is available for free. View the [LICENSE](https://github.com/histefanhere/minescript/blob/master/LICENSE) document for more details.
 
 
 ## Links
-- [Original XAHK project](https://github.com/monpjc/XAHK)
-- [AutoHotkey](https://www.autohotkey.com/)
+- [monpjc, the orignal creator](https://github.com/monpjc)
 - [xisumavoid](https://www.youtube.com/c/XisumavoidMC)
+- [AutoHotkey](https://www.autohotkey.com/)

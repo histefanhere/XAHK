@@ -13,7 +13,7 @@ FileInstall, ./assets/logo.ico, %A_Temp%/minescript_logo.ico
 ;@Ahk2Exe-ExeName Minescript
 
 ; Global variables
-wintitle := "Minescript v0.5"
+windowTitle := "Minescript v0.5"
 DEBUG := False
 targetwinclass := "GLFW30" ; This is the Class of a Java program used to check we have a Minecraft program
 targettitle := ""
@@ -72,7 +72,7 @@ If (%ProgState% != 0)
 	Return
 }
 
-Gui, Start:Show, Center W300 H300, %wintitle%
+Gui, Start:Show, Center W300 H300, %windowTitle%
 Gui, Start:Add, Pic, W280 H290 vpic_get, %A_Temp%/minescript_welcome.png
 Return
 
@@ -106,8 +106,17 @@ SelectWindow:
 	; Target window found, swap to next screen
 	ProgState = 1
 	Gui, Start:Destroy
-	Gui, Main:New, , %wintitle%
+	Gui, Main:New, , %windowTitle%
 	Gui, Main:Menu, ClickerMenu
+
+	; New in progress GUI
+	; Gui, Font
+	; Gui, Font, s17
+	; Gui, Main:Add, Text, X15 Y15, Current Mode:
+	; Gui, Font
+	; Gui, Font, s9, Segoe UI
+	; testMessage := "AFK fish farms in 1.16+ aren't as efficient as they used to be, but are still great sources of enchanted books and rare items."
+	; Gui, Main:Add, Text, , %testMessage%
 
 	; Left GUI element group
 	Gui, Main:Add, Text, X10 Y15 , Target Window Title :
@@ -121,6 +130,7 @@ SelectWindow:
 	Gui, Main:Add, Text, X150 Y15 vtargettitleText, %targettitle%
 	Gui, Main:Add, Text, vIDText, %id%
 	Gui, Main:Add, Text, vMode w100, None
+	; Gui, Main:Add, Text, vMode w100 X150 Y15, None
 
 	GuiControl, Main:Hide, MySlider
 	Gui, Main: Show, H400 H210
