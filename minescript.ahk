@@ -10,10 +10,10 @@ FileInstall, ./assets/logo.ico, %A_Temp%/minescript_logo.ico
 
 ; These don't seem to be doing anything, the compiler won't listen to them :-(
 ;@Ahk2Exe-SetMainIcon ./assets/logo.ico
-;@Ahk2Exe-ExeName Minescript
+;@Ahk2Exe-ExeName Minescript.exe
 
 ; Global variables
-windowTitle := "Minescript v0.5"
+windowTitle := "Minescript v0.6"
 DEBUG := False
 targetwinclass := "GLFW30" ; This is the Class of a Java program used to check we have a Minecraft program
 targettitle := ""

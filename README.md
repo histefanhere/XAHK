@@ -1,17 +1,17 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/histefanhere/minescript/master/assets/logo.png" height="300" alt="XAHK logo">
+    <img src="https://raw.githubusercontent.com/monpjc/XAHK/master/assets/logo.png" height="300" alt="XAHK logo">
 </p>
 <p align="center">
-  <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/histefanhere/minescript?include_prereleases">
-  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/histefanhere/minescript">
-  <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/histefanhere/minescript/total?logo=GitHub">
-  <img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed/histefanhere/minescript">
-  <img alt="GitHub" src="https://img.shields.io/github/license/histefanhere/minescript">
+  <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/monpjc/XAHK?include_prereleases">
+  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/monpjc/XAHK">
+  <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/monpjc/XAHK/total?logo=GitHub">
+  <img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed/monpjc/XAHK">
+  <img alt="GitHub" src="https://img.shields.io/github/license/monpjc/XAHK">
 </p>
 
 
 # Minescript
-Auto Key Clicker for Minecraft under request from [Xisumavoid](https://www.youtube.com/c/XisumavoidMC) that allows you to use your computer at the same time. Developed for use with vanilla Minecraft and works with all versions.
+Auto Key Clicker for Minecraft under request from [Xisumavoid](https://www.youtube.com/c/XisumavoidMC) that allows you to use your computer at the same time. Developed for use with vanilla Minecraft and works with all versions. Originally developed by [monpjc](https://github.com/monpjc).
 
 
 ## Table of contents
