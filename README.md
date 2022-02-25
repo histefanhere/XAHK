@@ -1,12 +1,12 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/monpjc/XAHK/master/assets/logo.png" height="300" alt="XAHK logo">
+    <img src="https://raw.githubusercontent.com/histefanhere/XAHK/master/assets/logo.png" height="300" alt="XAHK logo">
 </p>
 <p align="center">
-  <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/monpjc/XAHK?include_prereleases">
-  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/monpjc/XAHK">
-  <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/monpjc/XAHK/total?logo=GitHub">
-  <img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed/monpjc/XAHK">
-  <img alt="GitHub" src="https://img.shields.io/github/license/monpjc/XAHK">
+  <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/histefanhere/XAHK?include_prereleases">
+  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/histefanhere/XAHK">
+  <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/histefanhere/XAHK/total?logo=GitHub">
+  <img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed/histefanhere/XAHK">
+  <img alt="GitHub" src="https://img.shields.io/github/license/histefanhere/XAHK">
 </p>
 
 
@@ -33,10 +33,10 @@ Allows running the Minecraft game client and interacting with the world while th
 
 The biggest feature is that you can use other apps on your comptuer while Minescript is running, all thanks to the power of AHK!
 
+
 ## Installation and Usage
-1. Download and Install AutoHotkey from their [official website](https://www.autohotkey.com/)
-2. Download the latest release of the Minescript executable form the [releases page](https://github.com/histefanhere/minescript/releases)
-3. Run the executable and follow the on-screen instructions; the [YouTube video](https://youtu.be/-wKW0OovGK4?t=280) by [xisumavoid](https://www.youtube.com/channel/UCU9pX8hKcrx06XfOB-VQLdw) also contains some additional instructions.
+1. Download the latest release of the Minescript executable from the [releases page](https://github.com/histefanhere/minescript/releases)
+2. Run the executable and follow the on-screen instructions; the [YouTube video](https://youtu.be/-wKW0OovGK4?t=280) by [xisumavoid](https://www.youtube.com/channel/UCU9pX8hKcrx06XfOB-VQLdw) also contains some additional instructions.
 
 
 ## YouTube Video
