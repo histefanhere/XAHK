@@ -30,6 +30,7 @@ ProgState := 0
 ; 3: ConcreteMode	  - Enter Concrete Mode
 ; 4: MobGrindMode	  - Enter Mob Grinder Mode
 ; 5: KillingMode	  - Enter Killing Mode
+; 6: GeneratorMode	  - Enter Stone/Cobblestone Generator Mode
 
 
 ; Hotkeys
@@ -38,6 +39,7 @@ Hotkey  !^e,	JumpFly			; Pressing ctrl + alt + e will dubble hit space and fire 
 Hotkey  !^c,	Concrete		; Pressing ctrl + alt + c will start concrete farming
 Hotkey  !^m,	MobGrind		; Pressing ctrl + alt + m will start mob grinding
 Hotkey	!^k,	MobKill			; Pressing ctrl + alt + k will start mob killing
+Hotkey	!^g,	Generator		; Pressing ctrl + alt + g will start mob killing
 Hotkey	!^s,	Stop			; Pressing ctrl + alt + s will stop it
 Hotkey  !^w,    SelectWindow 	; Allows user to select window to control by hovering mouse over it and pressing ctrl + alt + w
 
@@ -58,6 +60,7 @@ Menu, OptionsMenu, Add, AFK Mob, MenuAFK
 Menu, OptionsMenu, Add, Concrete, MenuConcrete
 Menu, OptionsMenu, Add, JumpFlying, MenuJumpFly
 Menu, OptionsMenu, Add, MobKill, MenuMobKill
+Menu, OptionsMenu, Add, Generator, MenuGenerator
 
 Menu, ClickerMenu, Add, File, :FileMenu
 Menu, ClickerMenu, Add, Help, :HelpMenu
@@ -258,6 +261,17 @@ MenuMobKill:
 	Return
 }
 
+MenuGenerator:
+{
+	BreakLoop := 1
+
+	GuiControl, Main:Text, Mode, Generator
+	GuiControl, Main:Hide, MySlider
+	GuiControl, Main:Text, ReminderText, CURRENT AVALIBLE OPTIONS:`no- Pressing ctrl + alt + g will start generator mining`no- Pressing ctrl + alt + s will stop any AutoKey function above
+
+	ProgState := 6
+	Return
+}
 ;===================================================================================================
 ; Called when Ctrl+Alt+E is pressed.
 ; NOTE: Target window MUST be in focus for this to work
@@ -424,6 +438,33 @@ MobKill:
 	Sleep 100
 	; Force mouse keys UP at exit
 	ControlClick, , ahk_id %id%, , Left, , NAU
+	Return
+}
+
+;===================================================================================================
+; Called when Ctrl+Alt+g is pressed. Hold LEFT click down.
+Concrete:
+{
+	If (ProgState != 6)
+	{
+		Return
+	}
+
+	BreakLoop := 0
+
+	ControlClick, , ahk_id %id%, ,Left, , NAD
+	sleep 100
+
+	While (BreakLoop = 0)
+	{
+		If (BreakLoop = 1)
+		{
+			sleep 10
+		}
+	}
+
+	ControlClick, , ahk_id %id%, ,Left, , NAU
+	Sleep 100
 	Return
 }
 
