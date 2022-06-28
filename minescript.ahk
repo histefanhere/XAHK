@@ -443,7 +443,7 @@ MobKill:
 
 ;===================================================================================================
 ; Called when Ctrl+Alt+g is pressed. Hold LEFT click down.
-Grinder:
+Generator:
 {
 	If (ProgState != 6)
 	{
