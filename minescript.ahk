@@ -39,7 +39,7 @@ Hotkey  !^e,	JumpFly			; Pressing ctrl + alt + e will dubble hit space and fire 
 Hotkey  !^c,	Concrete		; Pressing ctrl + alt + c will start concrete farming
 Hotkey  !^m,	MobGrind		; Pressing ctrl + alt + m will start mob grinding
 Hotkey	!^k,	MobKill			; Pressing ctrl + alt + k will start mob killing
-Hotkey	!^g,	Generator		; Pressing ctrl + alt + g will start mob killing
+Hotkey	!^g,	Generator		; Pressing ctrl + alt + g will start generator mode
 Hotkey	!^s,	Stop			; Pressing ctrl + alt + s will stop it
 Hotkey  !^w,    SelectWindow 	; Allows user to select window to control by hovering mouse over it and pressing ctrl + alt + w
 
