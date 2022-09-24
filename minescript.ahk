@@ -308,13 +308,13 @@ Concrete:
 
 	BreakLoop := 0
 
-	ControlClick, , ahk_id %id%, ,Right, , NAD
-	Sleep 500
-	ControlClick, , ahk_id %id%, ,Left, , NAD
-	sleep 100
-
 	While (BreakLoop = 0)
 	{
+		ControlClick, , ahk_id %id%, ,Right, , NAD
+		Sleep 500
+		ControlClick, , ahk_id %id%, ,Left, , NAD
+		sleep 100
+
 		If (BreakLoop = 1)
 		{
 			sleep 10
@@ -451,12 +451,11 @@ Generator:
 	}
 
 	BreakLoop := 0
-
-	ControlClick, , ahk_id %id%, ,Left, , NAD
-	sleep 100
-
 	While (BreakLoop = 0)
 	{
+		ControlClick, , ahk_id %id%, ,Left, , NAD
+		sleep 100
+
 		If (BreakLoop = 1)
 		{
 			sleep 10
