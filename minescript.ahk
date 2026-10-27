@@ -16,6 +16,7 @@ FileInstall, ./assets/logo.ico, %A_Temp%/minescript_logo.ico
 windowTitle := "Minescript v0.8"
 DEBUG := False
 targetwinclass := "GLFW30" ; This is the Class of a Java program used to check we have a Minecraft program
+targetwinclass2 := "SDL_app" ; Class used by newer Minecraft versions, which use SDL instead of GLFW
 targettitle := ""
 ModeText := ""
 id := 0
@@ -96,7 +97,7 @@ SelectWindow:
 	}
 
 	; Check if the class of the program is a Minecraft Java Class
-	If (!InStr(targetclass, targetwinclass))
+	If (!InStr(targetclass, targetwinclass) && !InStr(targetclass, targetwinclass2))
 	{
 		; Class of target program not a match so give a warning message
 		ErrorTitle := "Warning"
