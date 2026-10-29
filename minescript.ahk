@@ -13,7 +13,7 @@ FileInstall, ./assets/logo.ico, %A_Temp%/minescript_logo.ico
 ;@Ahk2Exe-ExeName Minescript.exe
 
 ; Global variables
-windowTitle := "Minescript v0.8"
+windowTitle := "Minescript v0.9"
 DEBUG := False
 targetwinclass := "GLFW30" ; This is the Class of a Java program used to check we have a Minecraft program
 targetwinclass2 := "SDL_app" ; Class used by newer Minecraft versions, which use SDL instead of GLFW
