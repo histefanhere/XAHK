@@ -139,12 +139,9 @@ SelectWindow:
 	GuiControl, Main:Hide, MySlider
 	Gui, Main: Show, H400 H210
 
-	; Clear mouse clicks to target by sending UP to the keys:
-	; - `Right` and `Left` specifies which mouse button to press
-	; - the `NA` option improves reliability when the window isn't active, and
-	; - the `U` letter sends an up-event
-	ControlClick, , ahk_id %id%, , Right, , NAU
-	ControlClick, , ahk_id %id%, , Left, , NAU
+	; Clear mouse clicks to target by sending UP to the right and left mouse buttons
+	MouseButton("Right", "U")
+	MouseButton("Left", "U")
 
 	Sleep 500
 	Return
@@ -292,9 +289,9 @@ JumpFly:
 	Sleep 75
 	Send {Space up}
 	Sleep 50
-	ControlClick, , ahk_id %id%, ,Right, , NAD
+	MouseButton("Right", "D")
 	Sleep 100
-	ControlClick, , ahk_id %id%, ,Right, , NAU
+	MouseButton("Right", "U")
 	Return
 }
 
@@ -311,9 +308,9 @@ Concrete:
 
 	While (BreakLoop = 0)
 	{
-		ControlClick, , ahk_id %id%, ,Right, , NAD
+		MouseButton("Right", "D")
 		Sleep 500
-		ControlClick, , ahk_id %id%, ,Left, , NAD
+		MouseButton("Left", "D")
 		sleep 100
 
 		If (BreakLoop = 1)
@@ -322,9 +319,9 @@ Concrete:
 		}
 	}
 
-	ControlClick, , ahk_id %id%, ,Left, , NAU
+	MouseButton("Left", "U")
 	Sleep 100
-	ControlClick, , ahk_id %id%, ,Right, , NAU
+	MouseButton("Right", "U")
 	Return
 }
 
@@ -347,9 +344,9 @@ Fishing:
 		}
 
 		Sleep %MySlider%
-		ControlClick, , ahk_id %id%, ,Right, , NAD
+		MouseButton("Right", "D")
 		Sleep 100
-		ControlClick, , ahk_id %id%, ,Right, , NAU
+		MouseButton("Right", "U")
 	}
 	Return
 }
@@ -369,12 +366,12 @@ MobGrind:
 	While (BreakLoop = 0)
 	{
 		; On each loop send RIGHT key down as it can be lost when switching focus
-		ControlClick, , ahk_id %id%, , Right, , NAD
+		MouseButton("Right", "D")
 
 		if (BreakLoop = 1)
 		{
 			; On Ctrl+Alt+S detected forces a RIGHT mouse key UP
-			ControlClick, , ahk_id %id%, , Right, , NAU
+			MouseButton("Right", "U")
 			Return
 		}
 
@@ -387,9 +384,9 @@ MobGrind:
 			; If delay counter reached, reset counter and send a LEFT click
 			Delay := 0
 			Sleep 50
-			ControlClick, , ahk_id %id%, , Left, , NAD
+			MouseButton("Left", "D")
 			Sleep 50
-			ControlClick, , ahk_id %id%, , Left, , NAU
+			MouseButton("Left", "U")
 		}
 		Else
 		{
@@ -400,8 +397,8 @@ MobGrind:
 
 	Sleep 100
 	; Force mouse keys UP at exit
-	ControlClick, , ahk_id %id%, , Right, , NAU
-	ControlClick, , ahk_id %id%, , Left, , NAU
+	MouseButton("Right", "U")
+	MouseButton("Left", "U")
 	Return
 }
 
@@ -426,9 +423,9 @@ MobKill:
 			; If delay counter reached, reset counter and send a LEFT click
 			Delay := 0
 			Sleep 50
-			ControlClick, , ahk_id %id%, , Left, , NAD
+			MouseButton("Left", "D")
 			Sleep 50
-			ControlClick, , ahk_id %id%, , Left, , NAU
+			MouseButton("Left", "U")
 		}
 		Else
 		{
@@ -438,7 +435,7 @@ MobKill:
 
 	Sleep 100
 	; Force mouse keys UP at exit
-	ControlClick, , ahk_id %id%, , Left, , NAU
+	MouseButton("Left", "U")
 	Return
 }
 
@@ -454,7 +451,7 @@ Generator:
 	BreakLoop := 0
 	While (BreakLoop = 0)
 	{
-		ControlClick, , ahk_id %id%, ,Left, , NAD
+		MouseButton("Left", "D")
 		sleep 100
 
 		If (BreakLoop = 1)
@@ -463,7 +460,7 @@ Generator:
 		}
 	}
 
-	ControlClick, , ahk_id %id%, ,Left, , NAU
+	MouseButton("Left", "U")
 	Sleep 100
 	Return
 }
@@ -476,10 +473,26 @@ Generator:
 Stop:
 {
 	BreakLoop := 1
-	ControlClick, , ahk_id %id%, ,Right, , NAU
-	ControlClick, , ahk_id %id%, ,Left, , NAU
+	MouseButton("Right", "U")
+	MouseButton("Left", "U")
 	Sleep 500
 	Return
+}
+
+;==================================================================================================
+; Presses or releases a mouse button in the target window.
+; A direct click is needed in newer Minecraft versions that use SDL when in focus, and ControlClick is used when the window is in the background.
+; - `button` is either "Left" or "Right" for which mouse button to press or release
+; - `state` is either "D" (down) or "U" (up)
+; - the `NA` option improves reliability when the window isn't active
+MouseButton(button, state)
+{
+	global id
+
+	If (WinActive("ahk_id " id))
+		Click, % button " " (state = "D" ? "Down" : "Up")
+	Else
+		ControlClick, , ahk_id %id%, , %button%, , NA%state%
 }
 
 ESC:
